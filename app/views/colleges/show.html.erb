@@ -1,0 +1,42 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @college %>
+
+<h4> Departments and Respective Laboratories:</h4>
+
+<table style="width:50%">
+
+  <tbody>
+    <%@college.each do |department|%>
+      
+     <tr> <td><strong> Department of <%=department.name%></strong></td></tr>
+      <tr> <td><strong>Location: <%=department.location%><strong></td> </tr>
+
+      <tr>
+          <td><strong>Laboratories:<br></strong></td>
+     
+      </tr>
+      <%department.laboratories.each do |laboratory|%>
+        <tr>
+          <td><strong><%= laboratory.name%></strong> -<%= laboratory.location%><br></td>
+          
+
+        </tr>
+        <% end %>
+
+
+  </tbody>
+
+  
+ 
+
+  <% end %>
+
+</table>
+
+<div>
+  <%= link_to "Edit this college", edit_college_path(@college) %> |
+  <%= link_to "Back to colleges", colleges_path %>
+
+  <%= button_to "Destroy this college", @college, method: :delete %>
+</div>
